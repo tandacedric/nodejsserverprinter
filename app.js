@@ -37,3 +37,7 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+//    "html5-to-pdf": "file:../html5-to-pdf",
+//    "html5-to-pdf": "github:tandacedric/html5-to-pdf",
+
+
