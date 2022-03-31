@@ -1,12 +1,11 @@
 var express = require('express');
+const HTML5ToPDF = require("html5-to-pdf")
 const SequentialTaskQueue = require("sequential-task-queue")
 const path = require("path")
 const errorLog = require('../utils/logger').errorlog;
 const successlog = require('../utils/logger').successlog;
-const printer = require('../utils/Html5ToPdf');
 var router = express.Router();
-//const html5ToPDF = new Html5ToPdf();
-//html5ToPDF.init({});
+const html5ToPDF = new HTML5ToPDF();
 var queue = new SequentialTaskQueue.SequentialTaskQueue();
 var printNumber = 1;
 
@@ -24,7 +23,6 @@ router.post('/print', async (req, res, next) => {
   queue.push(async () => {
     printNumber++;
     let input = req.body.input;
-    let inputFileName = req.body.inputFileName;
     let size = req.body.size;
     let landscape = req.body.landscape;
     let displayHeaderFooter = req.body.displayHeaderFooter;
@@ -32,8 +30,6 @@ router.post('/print', async (req, res, next) => {
     let renderDelay = req.body.renderDelay ? req.body.renderDelay : -1;
     const options = {
       inputPath: input,
-      inputFileName: inputFileName,
-      basePath: "http://localhost:5000/tmp",
       outputPath: decodeURIComponent(output),
       include: [
       ]
@@ -75,10 +71,14 @@ router.post('/print', async (req, res, next) => {
       };
     }
     if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay);
+    html5ToPDF.setOptions(options);
 
     try {
-      await printer.process(options);
+      await html5ToPDF.start();
+      await html5ToPDF.build();
+      await html5ToPDF.close();
       successlog.info(`Job number ${printNumber}: DONE  : ${JSON.stringify(options)}`);
+
     } catch (error) {
       errorLog.error(`Job number ${printNumber} ERROR: : ${JSON.stringify(options)} =>  ${JSON.stringify(error)}`);
       //console.error(error)
