@@ -2,7 +2,8 @@ var express = require('express');
 const HTML5ToPDF = require("html5-to-pdf")
 const SequentialTaskQueue = require("sequential-task-queue")
 const path = require("path")
-
+const errorLog = require('../utils/logger').errorlog;
+const successlog = require('../utils/logger').successlog;
 var router = express.Router();
 const html5ToPDF = new HTML5ToPDF();
 var queue = new SequentialTaskQueue.SequentialTaskQueue();
@@ -11,52 +12,27 @@ var printNumber = 1;
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  
+router.get('/', function (req, res, next) {
+
   res.render('index', { title: 'Learndia Printer HTML5 to PDF' });
 });
 /* GET home page. */
 
 var printNumber = 1;
-router.post('/print', async (req, res, next) =>{
-  queue.push(async() => {
-
-
-    /*
-    printNumber ++;
-
-    console.log("Print query.value "+req.body.value);
-    console.log("Print number "+printNumber);
-    let fileName = req.body.fileName;
-    var options = {
-      //inputPath: path.join(__dirname, "..", "assets", "basic.html"),
-      inputPath: path.join(__dirname, "..", "assets", fileName+".html"),
-      outputPath: path.join(__dirname, "..", "tmp", fileName+"_"+req.body.value+".pdf"),
-      //templatePath: path.join(__dirname, "..", "templates", "basic"),
-      include: [
-        path.join(__dirname,"..", "assets", "basic.css"),
-        path.join(__dirname,"..", "assets", "custom-margin.css"),
-      ],
-    };*/
-
-     let input = req.body.input;
-     let size = req.body.size;
-     let landscape = req.body.landscape;
-     let displayHeaderFooter = req.body.displayHeaderFooter;
-     let output = req.body.output;
-     let renderDelay = req.body.renderDelay?req.body.renderDelay:-1;
-
-    
-
+router.post('/print', async (req, res, next) => {
+  queue.push(async () => {
+    printNumber++;
+    let input = req.body.input;
+    let size = req.body.size;
+    let landscape = req.body.landscape;
+    let displayHeaderFooter = req.body.displayHeaderFooter;
+    let output = req.body.output;
+    let renderDelay = req.body.renderDelay ? req.body.renderDelay : -1;
     const options = {
       inputPath: input,
-      inputBody: "Oufs!!, Content not found",
       outputPath: decodeURIComponent(output),
       include: [
-        //   path.join(__dirname, "assets", "basic.css"),
-        //   path.join(__dirname, "assets", "custom-margin.css"),
       ]
-  
     };
 
     if (!!parseInt(displayHeaderFooter)) {
@@ -67,8 +43,8 @@ router.post('/print', async (req, res, next) =>{
 
       const css = cssb.join('');
 
-      params['pdf'] = {
-  
+      options['pdf'] = {
+
         printBackground: true,
         //preferCSSPageSize: true,
         displayHeaderFooter: true,
@@ -88,31 +64,32 @@ router.post('/print', async (req, res, next) =>{
                         </div>`,
       };
     } else {
-      params['options'] = {
+      options['options'] = {
         printBackground: true,
         landscape: !!parseInt(landscape),
         pageSize: size
       };
     }
-    if(parseInt(renderDelay)>0) params['renderDelay'] = parseInt(renderDelay);
-
-
+    if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay);
+    successlog.info(`Job number ${printNumber}: ${options}`);
     html5ToPDF.setOptions(options);
 
     try {
       await html5ToPDF.start();
       await html5ToPDF.build();
       await html5ToPDF.close();
-      console.log("DONE")
+      successlog.info(`Job number ${printNumber}: DONE`);
+
     } catch (error) {
-      console.error(error)
+      errorLog.error(`Job number ${printNumber} Error:  ${error}`);
+      //console.error(error)
       //process.exitCode = 1
     } finally {
       //process.exit();
     }
-    res.json( { title: 'print' });
+    res.json({ title: 'print' });
   });
-    
+
 });
 
 module.exports = router;
