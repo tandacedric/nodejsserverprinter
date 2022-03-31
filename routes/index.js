@@ -71,24 +71,23 @@ router.post('/print', async (req, res, next) => {
       };
     }
     if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay);
-    successlog.info(`Job number ${printNumber}: ${options}`);
     html5ToPDF.setOptions(options);
 
     try {
       await html5ToPDF.start();
       await html5ToPDF.build();
       await html5ToPDF.close();
-      successlog.info(`Job number ${printNumber}: DONE`);
+      successlog.info(`Job number ${printNumber}: DONE  : ${JSON.stringify(options)}`);
 
     } catch (error) {
-      errorLog.error(`Job number ${printNumber} Error:  ${error}`);
+      errorLog.error(`Job number ${printNumber} ERROR: : ${JSON.stringify(options)} =>  ${JSON.stringify(error)}`);
       //console.error(error)
       //process.exitCode = 1
     } finally {
       //process.exit();
     }
     res.json({ title: 'print' });
-  });
+  },{timeout: 10000});
 
 });
 
