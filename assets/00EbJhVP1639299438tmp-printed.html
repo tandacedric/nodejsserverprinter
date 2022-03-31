@@ -1,0 +1,1440 @@
+<html>
+    <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+          <style>
+              @media print{
+                @page { 
+                  size: A4 portrait; 
+                  margin: 0.1cm 0.5cm 0cm 0.5cm ;
+                }
+              
+              }
+            /*Flex layout*/
+
+            /*Most common used flex styles*/
+
+            .layout.horizontal,
+            .layout.vertical {
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            }
+
+            .layout.inline {
+            display: -ms-inline-flexbox;
+            display: -webkit-inline-flex;
+            display: inline-flex;
+            }
+
+            .layout.horizontal {
+            -ms-flex-direction: row;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            }
+
+            .layout.vertical {
+            -ms-flex-direction: column;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            }
+
+            .layout.wrap {
+            -ms-flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            }
+
+            .layout.no-wrap {
+            -ms-flex-wrap: nowrap;
+            -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            }
+
+            .layout.center,
+            .layout.center-center {
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            }
+
+            .layout.center-justified,
+            .layout.center-center {
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            }
+
+            .flex {
+            -ms-flex: 1 1 0.000000001px;
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-flex-basis: 0.000000001px;
+            flex-basis: 0.000000001px;
+            }
+
+            .flex-auto {
+            -ms-flex: 1 1 auto;
+            -webkit-flex: 1 1 auto;
+            flex: 1 1 auto;
+            }
+
+            .flex-none {
+            -ms-flex: none;
+            -webkit-flex: none;
+            flex: none;
+            }
+
+            /* Basic flexbox reverse styles*/
+            .layout.horizontal-reverse,
+            .layout.vertical-reverse {
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            }
+
+            .layout.horizontal-reverse {
+            -ms-flex-direction: row-reverse;
+            -webkit-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+            }
+
+            .layout.vertical-reverse {
+            -ms-flex-direction: column-reverse;
+            -webkit-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+            }
+
+            .layout.wrap-reverse {
+            -ms-flex-wrap: wrap-reverse;
+            -webkit-flex-wrap: wrap-reverse;
+            flex-wrap: wrap-reverse;
+            }
+            /*Flexbox alignment*/
+
+            /**
+                * Alignment in cross axis.
+                */
+            .layout.start {
+            -ms-flex-align: start;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+            }
+
+            .layout.center,
+            .layout.center-center {
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            }
+
+            .layout.end {
+            -ms-flex-align: end;
+            -webkit-align-items: flex-end;
+            align-items: flex-end;
+            }
+
+            .layout.baseline {
+            -ms-flex-align: baseline;
+            -webkit-align-items: baseline;
+            align-items: baseline;
+            }
+
+            /**
+                * Alignment in main axis.
+                */
+            .layout.start-justified {
+            -ms-flex-pack: start;
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+            }
+
+            .layout.center-justified,
+            .layout.center-center {
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            }
+
+            .layout.end-justified {
+            -ms-flex-pack: end;
+            -webkit-justify-content: flex-end;
+            justify-content: flex-end;
+            }
+
+            .layout.around-justified {
+            -ms-flex-pack: distribute;
+            -webkit-justify-content: space-around;
+            justify-content: space-around;
+            }
+
+            .layout.justified {
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            }
+
+            /**
+                * Self alignment.
+                */
+            .self-start {
+            -ms-align-self: flex-start;
+            -webkit-align-self: flex-start;
+            align-self: flex-start;
+            }
+
+            .self-center {
+            -ms-align-self: center;
+            -webkit-align-self: center;
+            align-self: center;
+            }
+
+            .self-end {
+            -ms-align-self: flex-end;
+            -webkit-align-self: flex-end;
+            align-self: flex-end;
+            }
+
+            .self-stretch {
+            -ms-align-self: stretch;
+            -webkit-align-self: stretch;
+            align-self: stretch;
+            }
+
+            .self-baseline {
+            -ms-align-self: baseline;
+            -webkit-align-self: baseline;
+            align-self: baseline;
+            }
+
+            /**
+                * multi-line alignment in main axis.
+                */
+            .layout.start-aligned {
+            -ms-flex-line-pack: start; /* IE10 */
+            -ms-align-content: flex-start;
+            -webkit-align-content: flex-start;
+            align-content: flex-start;
+            }
+
+            .layout.end-aligned {
+            -ms-flex-line-pack: end; /* IE10 */
+            -ms-align-content: flex-end;
+            -webkit-align-content: flex-end;
+            align-content: flex-end;
+            }
+
+            .layout.center-aligned {
+            -ms-flex-line-pack: center; /* IE10 */
+            -ms-align-content: center;
+            -webkit-align-content: center;
+            align-content: center;
+            }
+
+            .layout.between-aligned {
+            -ms-flex-line-pack: justify; /* IE10 */
+            -ms-align-content: space-between;
+            -webkit-align-content: space-between;
+            align-content: space-between;
+            }
+
+            .layout.around-aligned {
+            -ms-flex-line-pack: distribute; /* IE10 */
+            -ms-align-content: space-around;
+            -webkit-align-content: space-around;
+            align-content: space-around;
+            }
+            /*iron-flex-factors*/
+
+            .flex,
+            .flex-1 {
+            -ms-flex: 1 1 0.000000001px;
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-flex-basis: 0.000000001px;
+            flex-basis: 0.000000001px;
+            }
+
+            .flex-2 {
+            -ms-flex: 2;
+            -webkit-flex: 2;
+            flex: 2;
+            }
+
+            .flex-3 {
+            -ms-flex: 3;
+            -webkit-flex: 3;
+            flex: 3;
+            }
+
+            .flex-4 {
+            -ms-flex: 4;
+            -webkit-flex: 4;
+            flex: 4;
+            }
+
+            .flex-5 {
+            -ms-flex: 5;
+            -webkit-flex: 5;
+            flex: 5;
+            }
+
+            .flex-6 {
+            -ms-flex: 6;
+            -webkit-flex: 6;
+            flex: 6;
+            }
+
+            .flex-7 {
+            -ms-flex: 7;
+            -webkit-flex: 7;
+            flex: 7;
+            }
+
+            .flex-8 {
+            -ms-flex: 8;
+            -webkit-flex: 8;
+            flex: 8;
+            }
+
+            .flex-9 {
+            -ms-flex: 9;
+            -webkit-flex: 9;
+            flex: 9;
+            }
+
+            .flex-10 {
+            -ms-flex: 10;
+            -webkit-flex: 10;
+            flex: 10;
+            }
+
+            .flex-11 {
+            -ms-flex: 11;
+            -webkit-flex: 11;
+            flex: 11;
+            }
+
+            .flex-12 {
+            -ms-flex: 12;
+            -webkit-flex: 12;
+            flex: 12;
+            }
+
+            /*Non-flexbox positioning helper styles*/
+
+            .block {
+            display: block;
+            }
+
+            [hidden] {
+            display: none !important;
+            }
+
+            .invisible {
+            visibility: hidden !important;
+            }
+
+            .relative {
+            position: relative;
+            }
+
+            .fit {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            }
+
+            body.fullbleed {
+            margin: 0;
+            height: 100vh;
+            }
+
+            .scroll {
+            -webkit-overflow-scrolling: touch;
+            overflow: auto;
+            }
+
+            /* fixed position */
+            .fixed-bottom,
+            .fixed-left,
+            .fixed-right,
+            .fixed-top {
+            position: fixed;
+            }
+
+            .fixed-top {
+            top: 0;
+            left: 0;
+            right: 0;
+            }
+
+            .fixed-right {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            }
+
+            .fixed-bottom {
+            right: 0;
+            bottom: 0;
+            left: 0;
+            }
+
+            .fixed-left {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            }
+            .ellipsis{
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+
+            .ellipsis2{
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+            .filigrane{
+              position:absolute;
+              z-index:-1;
+              display:block;
+              top:400px;
+              bottom:0;
+              left:0;
+              right:0;
+            }
+          
+        
+        
+            .filigrane-text
+            {
+                color:lightgrey;
+                font-size:145px;
+                transform:rotate(295deg);
+                -webkit-transform:rotate(295deg);
+                color:#F5F5F5;
+                
+            }
+            #main{
+              border:3px solid #2196f3;
+              padding:3px;
+              /* margin-left:30px; */
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+            }
+            #avatar_div{
+              width: 60px;
+              height: 60px;
+              background-size: cover;
+              background-position: center center;
+            }
+            #table_conduct{
+              border-collapse:collapse;
+              
+            }
+            #table_conduct td{
+              border:1px solid #2196f3;
+              border-collapse:collapse;
+
+            }
+            
+            #table_conduct th{
+              border:1px solid #2196f3;
+              font-size:11px;
+              font-weight:600;
+              padding:0 2px
+            }
+            .signature{
+              width: 90px;
+              z-index: 2;
+              position: absolute;
+              top: 40px;
+              left: 150px
+
+            }
+
+            #header_container{
+              height:2.5cm;
+            }
+        </style>
+    </head>
+    <body style="">
+      <!-- http://scratchpad.io/chemical-quarter-4485 -->
+      <div id="main">
+        <span class="filigrane">
+          <p class="filigrane-text"></p>
+        </span>
+        <div id="header_container" class="layout vertical">
+          <div class="layout  horizontal justified center">
+           <div  class="layout horizontal start-justified">
+               <div style="text-align:center">
+                        <div style="font-weight:600">Ministère de l'Education de Base</div>
+                        <div style="font-size:10px">Ministry of Basic Education</div>
+               </div>
+           </div> 
+             <div class="layout horizontal start-justified">
+               <div style="text-align:center">
+                    <div style="font-weight:bold">République du Cameroun</div>
+                    <div style="font-size:10px;">Paix - Travail - Patrie</div>
+               </div>
+           </div> 
+          </div>
+          
+           <div style="margin-top:0px" class="layout horizontal center  justified">
+               <div>
+                    <div style="padding:2px;text-align:center;background-color:#2196f3;">
+                        <div style="text-transform:uppercase;font-size:12px;color:white;font-weight:bold;background-color:#2196f3">Ecole privée Laic Bilingue « LA PERSEVERANCE PLUS »</div>
+                        <div class="layout horizontal center-justified" style="text-transform:uppercase;">
+                          <span style="font-size:10px; color: #2196f3;margin:0 3px;padding: 0 3px;background-color:white">BP: 11568 Douala New-Bell</span>
+                           <span style="font-size:10px;  color: #2196f3;margin:0 3px;padding: 0 3px;background-color:white">Tel:  670677565</span>
+                        </div>
+                    </div>    
+               </div>
+               <div style="width:20%" class="layout horizontal center-center">
+                    <img style="max-width:100%;max-height:50px" src="https://image.learndia.com/users/learndia_imbo_w/images/jUY-WC6pBafy?publicKey=MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAOIG5BUCAwEAAQ%3D%3D&accessToken=038cb696cd864d78ec566f2eca42745d9bb3f18b91fdf221b30c26276d491e97"/>
+               </div>
+               <div class="layout vertical center">
+                  <div class="layout vertical center">
+                    <div style="text-transform:uppercase;font-size:12x;font-weight:bold;color:#2196f3">BULLETIN DE NOTES</div>
+                    <div style="text-transform:uppercase;font-size:10px;font-weight:500;color:#2196f3">REPORT CARD No</div> 
+                  </div>
+                    <div class="layout vertical center" style="padding:0px 0 0 0;">
+                        <div style="font-weight:bold;font-size:10px;">Année scolaire</div>
+                        <div class="layout horizontal center">
+                          <div style="font-size:10px">School year</div>
+                          <div style="margin-left:5px;text-transform:uppercase;font-weight:500;font-size:10px;font-weight:600;">2021-2022</div>
+                        </div>
+                    </div>
+               </div>
+           </div> 
+        </div>
+        <div>
+          <div class="layout horizontal">
+            <div style="padding: 0 10px 0 0">
+              <div id="avatar_div" style="background-image:url(https://image.learndia.com/users/learndia_imbo_w/images/qG5yNn7o0xlq.jpg?publicKey=MCAwDQYJKoZIhvcNAQEBBQADDwAwDAIFAOIG5BUCAwEAAQ%3D%3D&t%5B0%5D=autoRotate&t%5B1%5D=thumbnail%3Awidth%3D90%2Cheight%3D100%2Cfit%3Doutbound&t%5B2%5D=compress%3Alevel%3D50&accessToken=1de81131d0615d0378ad15d331708e9e5429560b2f674f1b333dddf365ae88d4)">
+              
+              </div>
+            </div>
+            <div class="flex">
+              <div class="layout horizontal">
+                <div style="margin-right:5px;">
+                  <div style="font-weight:600;font-size:11px">Nom et prenom:</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">Student name</div>
+                </div>
+                <div class="flex">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">NJIKE  KAMDOUM ANDREA  ROCHELVY</div>
+                </div>
+              </div>
+              <div class="layout horizontal">
+                <div style="margin-right:5px;">
+                  <div style="font-weight:600;font-size:11px">Ne le:</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">Born on the</div>
+                </div>
+                <div class="flex">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">2016-03-14</div>
+                </div>
+                <div style="margin:0 5px;">
+                  <div style="font-weight:600;font-size:11px">A:</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">At</div>
+                </div>
+                <div class="flex">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">douala</div>
+                </div>
+                <div style="margin:0 5px;">
+                  <div style="font-weight:600;font-size:11px">No Mat:</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">Mat No</div>
+                </div>
+                <div class="flex">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">21F0763</div>
+                </div>
+              </div>
+              <div class="layout horizontal">
+                <div style="margin-right:5px;">
+                  <div style="font-weight:600;font-size:11px">Classe:</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">Class</div>
+                </div>
+                <div class="flex-3">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">CL1</div>
+                </div>
+                <div style="margin:0 5px;">
+                  <div style="font-weight:600;font-size:11px">Effectif:</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">Number of students</div>
+                </div>
+                <div class="flex">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">21</div>
+                </div>
+                <div style="margin:0 5px;">
+                  <div style="font-weight:600;font-size:11px">Redoublant(e):</div>
+                  <div style="font-size:9px;font-weight:400;line-height:9px">Repeater</div>
+                </div>
+                <div class="flex">
+                  <div style="font-weight:bold;width:100%;border-bottom:1px solid;font-size:12px">Non</div>
+                </div>
+              </div>
+                          </div> 
+          </div>
+
+          <div style="border:1px solid #2196f3;margin:2px 0 0" class="layout horizontal center-center">
+            <span style="text-transform:uppercase; font-size:15px;font-weight:600">TERM1</span>
+          </div>  
+          <div style="background-color:#2196f3;margin:5px 0 0" class="layout horizontal">
+            <div  style="border-right:1px solid white;width:14.55% !important" class="layout horizontal center-center"><span style="color:white;font-size:13px;font-weight:600">GROUPES</span></div>  
+            <div class="layout horizontal flex">
+              <div style="border-right:1px solid white;" class=" layout horizontal center-center flex">
+                <span style="color:white;font-size:12px;font-weight:600">MATIERES</span>
+                <span style="color:white;font-size:11px;font-weight:400">&nbsp;/&nbsp;SUBJECTS</span>
+              </div> 
+                            <div  style="border-right:1px solid white;width:7.25% !important" class="layout vertical center-center">
+                <span style="color:white;font-size:12px;font-weight:600;text-align:center">EVAL 1</span>
+                <span style="color:white;font-size:11px;font-weight:500;text-align:center">50%</span>
+              </div>
+            
+                            <div  style="border-right:1px solid white;width:7.25% !important" class="layout vertical center-center">
+                <span style="color:white;font-size:12px;font-weight:600;text-align:center">EVAL 2</span>
+                <span style="color:white;font-size:11px;font-weight:500;text-align:center">50%</span>
+              </div>
+            
+                            <div  style="border-right:1px solid white;width:7.25% !important" class="layout horizontal center-center"><span style="color:white;font-size:12px;font-weight:600;text-align:center">Moy.</span></div>  
+              <div  style="border-right:1px solid white;width:7.25% !important" class="layout horizontal center-center"><span style="color:white;font-size:12px;font-weight:600">COEF.</span></div> 
+              <div  style="border-right:1px solid white;width:7.25% !important"  class="layout horizontal center-center"><span style="color:white;font-size:11px;font-weight:600">TOTAL <br/>/20</span></div> 
+              <div  style="border-right:1px solid white;width:7.25% !important" class="layout horizontal center-center"><span style="color:white;font-size:12px;font-weight:600">RANG</span></div> 
+              <div style="width:11% !important" class=" layout horizontal center-center"><span style="color:white;font-size:11px;font-weight:600">MENTIONS</span></div> 
+            </div>
+          </div>
+          <!--zon note-->
+          <div>
+            <!--boucle des groupes sur ceci-->
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA1-ENGLISH LANGUAGE 1</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Dictation</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">18<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">4<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">11 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">11</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">12/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">11</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">11/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA2-ENGLISH LANGUAGE 2</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Handwriting</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">16 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">16</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">6/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Grammar and Vocabulary</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">9<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">12.5 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">12.5</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">17/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">28.5</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">2</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">14.25/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA3-MATHEMATICS</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Mathematics I</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">18<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">14<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">16 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">16</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">11/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Mathematics II</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">15<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">15.5 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">15.5</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">14/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">31.5</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">2</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">15.75/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA4-FRENCH LANGUAGE</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Dictée</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Manomo </span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">12.5<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">14.25 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">14.25</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">14/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Compréhension</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Manomo </span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">9<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">12.5 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">12.5</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">16/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Gram / Voca / Orth / Conj</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Manomo </span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">12.5<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">19<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">15.75 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">15.75</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">7/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">42.5</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">3</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">14.17/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA6-CITIZENSHIP</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Civics / Human Right</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">4<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">14<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">9 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">9</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">18/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">N.A</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Moral Education</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">16 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">16</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">6/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">25</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">2</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">12.5/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA7-SCIENCE AND TECHNOLOGY</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Health Education</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">16 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">16</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">1/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Technology and Engineering / Environmental Education</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">8<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">12 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">12</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">10/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">28</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">2</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">14/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA8-VOCATIONAL STUDIES</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Agro-Pastoral</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">20<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">18 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">18</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">2/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Expert</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">18</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">18/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA9-I C T</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Information Communication and Technology</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">10<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">12<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">11 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">11</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">15/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">11</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">11/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA10-NATIONAL LANGUAGE AND CULTURE </span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">National Language and Culture</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">18<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">17 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">17</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">3/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">Acquis</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">17</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">17/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA11-PHYSICAL EDUCATION</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Gymnastic / High Jump / Sprints / Short Put</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">12<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">0<span style="font-size:9px">&nbsp;/</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">6 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">6</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">11/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">N.A</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">6</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">6/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA12-ARTISTIC EDUCATION</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Visuals Arts / Drama / Music / Dance</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">14<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">14<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">14 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">14</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">14/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Arts and Crafts</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">4<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">12<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">8 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">8</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">12/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">N.A</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">22</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">2</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">11/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+                        <div style="border-top:1px solid #2196f3;"  class="layout horizontal">
+              <div  style="padding:2px 0;width:14.5% !important"><span style="text-transform: ;font-size:8px">GPA13-ATTITUDE</span></div>
+              <!--boucle des notes sur ce div-->
+              <div class="flex"> 
+              
+
+                        
+                <div style="border-bottom:1px solid #2196f3;" class="layout horizontal">
+                  <div style="border-left:1px solid #2196f3;border-right:1px solid #2196f3;padding:0 0 0px 0;" class="layout horizontal center flex ellipsis2">
+                    <div style="" class="layout vertical flex">
+                      <div style="" class="layout horizontal center justified">
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;">Gymnastic / High Jump / Sprints / Short Put</span>
+                        <span class="ellipsis2" style="font-size:10px;font-weight:400;padding-left:1px;z-index:-1;color:#888888;padding-right:5px"> Tanyi</span>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">16<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important" class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;color:#333333">12<span style="font-size:9px">&nbsp;/20</span></span></div>
+                                    <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:11px;font-weight:400;">14 <span style="font-size:9px">&nbsp;/20</span></span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;color:#333333">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400;">14</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class=" layout horizontal center-center"><span style="font-size:10px;font-weight:400">10/21</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:11% !important"  class="layout horizontal center-center"><span style="font-size:10px;font-weight:400">ECA</span></div> 
+                </div>
+                              <!--fin boucle des notes sur ce div-->
+                <div style="margin-bottom:3px"  class="layout horizontal">
+                  <div style="border-right:1px solid #2196f3;padding:0 3px;" class=" layout horizontal center flex end-justified">
+                    <span style="font-size:8px;font-weight:500;padding:0 10px">TOTAL</span>
+                  </div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25% )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">14</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width: calc( 7.25%  )!important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">1</span></div> 
+                  <div  style="border-right:1px solid #2196f3;width:calc( 14.5% + 1px ) !important"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:500">MOYENNE</span></div> 
+                  <div  style="border-right:1px solid #2196f3;border-bottom:1px solid #2196f3;width:11% !important;"  class="layout horizontal center-center"><span style="font-size:8px;font-weight:600">14/20 </span></div> 
+                </div>
+              </div>      
+            </div>
+            
+            <!--fin boucle des groupes sur ce div-->
+          </div>
+          <!--total-->
+          <div style="border:1px solid #2196f3;margin-top:2px" class="layout horizontal">
+            <div style="border-right:1px solid #2196f3;" class="flex  layout horizontal center-center">
+                  <span class="ellipsis" style="font-size:10px;font-weight:600;text-transform:uppercase">TOTAL GPA1+GPA2+GPA3+GPA4+GPA6+GPA7+GPA8+GPA9+GPA10+GPA11+GPA12+GPA13</span>
+            </div> 
+            <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class="layout horizontal center-center"><span style="font-size:12px;font-weight:600">254.5</span></div> 
+            <div  style="border-right:1px solid #2196f3;width:7.25% !important"  class="layout horizontal center-center"><span style="font-size:12px;font-weight:600">19</span></div> 
+            <div  class="layout horizontal center" style="width:calc( 25.5% + 3px ) !important">
+                              <div  style="border-right:1px solid #2196f3;width:50% !important;height:100%"  class="layout vertical center-center">
+                  <span style="font-size:10px;font-weight:600">M. EVAL 1</span>
+                  <span style="font-size:10px;font-weight:600">13/20</span>
+                </div> 
+                              <div  style="border-right:0px solid #2196f3;width:50% !important;height:100%"  class="layout vertical center-center">
+                  <span style="font-size:10px;font-weight:600">M. EVAL 2</span>
+                  <span style="font-size:10px;font-weight:600">14.56/20</span>
+                </div> 
+                          </div>
+          </div>
+         
+          
+          <!--moyenne-->
+          <div style="border:1px solid #2196f3;border-top:none" class="layout horizontal">
+              
+            <div class="layout horizontal justified flex-3" style="border-right:1px solid #2196f3;;padding:0 5px">
+             
+            </div>
+              
+            <div class="layout horizontal flex-5" style="border-right:1px solid #2196f3;padding:0 5px">
+              <div class="layout vertical flex">
+                  <div class="layout horizontal center justified">
+                    <div style="margin-top:1px" class="layout horizontal center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600;line-height: 1;">Moyenne</span>
+                        <span class="ellipsis" style="font-size:10px;font-weight:500;line-height: 1;color:#333333;margin-left:5px">Average</span>
+                    </div>
+                    <div style="margin-top:1px; border:1px solid #2196f3;padding:1px 3px" class="layout vertical center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600">13.39 / 20</span>
+                    </div>
+                  </div>
+
+                  <div class="layout horizontal center justified">
+
+                    <div style="margin-top:1px" class="layout horizontal center">
+                          <span class="ellipsis" style="font-size:11px;font-weight:600;line-height: 1;"> Moyenne générale</span>
+                          <span class="ellipsis" style="font-size:10px;font-weight:500;line-height: 1;color:#333333;margin-left:5px">Class average</span>
+                    </div>
+                    <div style="margin-top:1px; border:1px solid #2196f3;padding:1px 3px" class="layout vertical center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600">13.28 / 20</span>
+                    </div>
+                  </div>
+
+                  <div class="layout horizontal center justified">
+
+                    <div style="margin-top:1px" class="layout horizontal center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600;line-height: 1;">Rang</span>
+                        <span class="ellipsis" style="font-size:10px;font-weight:500;line-height: 1;color:#333333;margin-left:5px">Position</span>
+                    </div>
+                    <div style="margin-top:1px; border:1px solid #2196f3;padding:1px 3px" class="layout vertical center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600">11 / 21</span>
+                    </div>
+                  </div>
+
+              </div> 
+            
+            </div>
+
+            <div class="layout horizontal justified flex-4" style="border-right:1px solid #2196f3;padding:0 5px">
+              <div class="flex  layout vertical">
+                  <div class="layout horizontal center justified">
+
+                    <div style="margin-top:2px" class="layout horizontal center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600;line-height: 1;"> Moy. Premier</span>
+                        <span class="ellipsis" style="font-size:10px;font-weight:500;line-height: 1;color:#333333;margin-left:5px">High AVG</span>
+                    </div>
+                    <div style="margin-top:2px; border:1px solid #2196f3;padding:1px 3px" class="layout vertical center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600">17.01 / 20</span>
+                    </div>
+                  </div>
+
+                  <div class="layout horizontal center justified">
+
+                    <div style="margin-top:2px" class="layout horizontal center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600;line-height: 1;">Moy. Dernier</span>
+                        <span class="ellipsis" style="font-size:10px;font-weight:500;line-height: 1;color:#333333;margin-left:5px">Lowest AVG </span>
+                    </div>
+                    <div style="margin-top:2px; border:1px solid #2196f3;padding:1px 3px" class="layout vertical center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600">7.13 / 20</span>
+                    </div>
+                  </div>
+                  <!--div-- class="layout horizontal center justified">
+                    <div style="margin-top:2px" class="layout horizontal center">
+                        <span class="ellipsis" style="font-size:12px;font-weight:600;line-height: 1;">Nbre Echoués</span>
+                        <span class="ellipsis" style="font-size:11px;font-weight:500;line-height: 1;color:#333333;margin-left:5px">Number of Stranded </span>
+                    </div>
+                    <div style="margin-top:2px; border:1px solid #2196f3;padding:1px 3px" class="layout vertical center">
+                        <span class="ellipsis" style="font-size:12px;font-weight:600">2</span>
+                    </div>
+                  </!--div-->  
+              </div> 
+            </div>
+
+              
+          </div>
+
+
+
+
+
+          <!--Appreciations-->
+          <div style="border:1px solid #2196f3;border-top:none" class="layout horizontal">
+            <div style="border-right:1px solid #2196f3;padding: 0 5px 1px" class="flex-7  layout horizontal center-center">
+                      <span class="ellipsis" style="font-size:11px;font-weight:600;">APPRECIATIONS / </span>
+                      <span class="ellipsis" style="font-size:10px;font-weight:500;">&nbsp;APPRECIATIONS</span>
+            </div> 
+          </div>
+          <div style="border:1px solid #2196f3;border-top:none" class="layout horizontal">
+                          <div style="border-right:1px solid #2196f3;padding: 0 5px 1px" class="flex layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Expert(E)</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Expert(E)</span>
+              </div>
+                            <div style="border-right:1px solid #2196f3;padding: 0 5px 1px" class="flex layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Acquis(A)</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Acquired(A)</span>
+              </div>
+                            <div style="border-right:1px solid #2196f3;padding: 0 5px 1px" class="flex layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">En Cours d'Acquisition(ACA)</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Meeting Expectation (ME)</span>
+              </div>
+                            <div style="border-right:1px solid #2196f3;padding: 0 5px 1px" class="flex layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Non Acquis(NA)</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Not Acquired(NA)</span>
+              </div>
+                        </div>
+
+          <!--Appreciations-->
+          <div style="border:1px solid #2196f3;border-top:none" class="layout horizontal">
+            <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-7  layout horizontal center-center">
+                      <span class="ellipsis" style="font-size:11px;font-weight:600;">TRAVAIL / </span>
+                      <span class="ellipsis" style="font-size:10px;font-weight:500;">&nbsp;ACADEMIC WORK</span>
+            </div> 
+          </div>
+          <div style="border:1px solid #2196f3;border-top:none" class="layout horizontal">
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-3 layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Tableau d'honneur</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Honor Roll</span>
+              </div>
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-3 layout vertical center-center">
+                        <span class="ellipsis" style="font-size:11px;font-weight:600;">Encouragement</span>
+                        <span class="ellipsis" style="font-size:10px;font-weight:500;">Encouragement</span>
+              </div> 
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-2 layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Felicitation</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Congratulation</span>
+              </div> 
+               
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-2 layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Avertissement</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Warning</span>
+              </div>
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-2 layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Blâme</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Serious Warning</span>
+              </div> 
+
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-2 layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Consigne</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Suspension</span>
+              </div> 
+              <div style="border-right:1px solid #2196f3;padding: 0 5px 0px" class="flex-2 layout vertical center-center">
+                  <span class="ellipsis" style="font-size:11px;font-weight:600;">Exclusion</span>
+                  <span class="ellipsis" style="font-size:10px;font-weight:500;">Exclusion</span>
+              </div> 
+          </div>
+
+          <!--Observations-->
+          <div style="border:1px solid #2196f3;border-top:none;height:70px" class="layout horizontal">
+             <div class="layout vertical center flex-2" style="padding-top:10px;border-right:1px solid #2196f3;">
+               <span style="font-size:14px;font-weight:500;">Date: ................</span>
+               <span style="font-size:14px;font-weight:600;">Parent/tutor</span>
+             </div>
+             <div style="border-right:1px solid #2196f3;" class="flex-6">
+              <div style="border-bottom:1px solid #2196f3;padding: 0 5px 2px" class="flex-7  layout horizontal center-center">
+                    <span class="ellipsis" style="font-size:10px;font-weight:600;">CONDUITE / </span>
+                    <span class="ellipsis" style="font-size:10px;font-weight:500;">&nbsp;CONDUCT</span>
+              </div> 
+              <div class="layout horizontal">
+                <table class="flex" id="table_conduct">
+                  <tr>
+                    <th style="width:45%">Type</th>
+                    <th style="font-size:9px;">Justifiées ou Exec</th>
+                    <th style="font-size:9px;">Non Just/Exécutées</th>
+                  </tr>
+
+               
+                                  <!--Boucle sur de 3 type d'indisciplie de l'éleve ici-->
+                    
+                  </table>
+              </div> 
+            </div> 
+            <div style="padding: 0 5px 2px;position:relative" class="flex-4  layout vertical center">
+              <div  style="padding-top:10px" class="layout vertical center">
+                  <span style="font-size:14px;font-weight:500;">Date: ....................</span>
+                  <span style="font-size:14px;font-weight:600;">Le directeur/La directrice</span>
+                   
+              </div>
+            </div>           
+          </div>
+        
+        
+        </div>
+       
+      </div>
+      <div style="position:sticky;bottom:0;right:0;left:30px;">
+          <div style="background-color:#2196f3;margin-top:1px" class="layout horizontal center-center">
+                <span style="font-size:10px;color:white;font-weight:600;padding:1px 0"> &copy; Learndia Inc. Douala - Cameroun. www.manager.learndia.com</span>
+          </div>
+      </div> 
+    </body>
+</html>
