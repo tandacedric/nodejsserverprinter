@@ -39,3 +39,5 @@ jspm_packages
 tmp
 dist
 examples/tmp
+
+.package-lock.json
