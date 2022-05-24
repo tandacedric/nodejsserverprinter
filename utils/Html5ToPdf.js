@@ -99,6 +99,7 @@ class Html5ToPdf {
     //console.log("url", `${options.basePath}/${options.inputFileName}`)
     await page.goto(`${options.basePath}/${options.inputFileName}`, {
       waitUntil: "networkidle0",
+      timeout:0
     })
     if (options.body && /^\s*<html>/.test(options.body)) {
       await page.setContent(options.body, {
@@ -116,7 +117,7 @@ class Html5ToPdf {
     //successlog.info(`Wait include asset ${(new Date()).toLocaleDateString()}`)
 
     if (options.renderDelay) {
-      await page.waitFor(options.renderDelay)
+      await page.waitForTimeout(options.renderDelay)
       //successlog.info(`Wait after Render delay ${renderDelay} => ${(new Date()).toLocaleDateString()}`)
 
     }

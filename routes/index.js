@@ -23,13 +23,15 @@ var printNumber = 1;
 router.post('/print', async (req, res, next) => {
   queue.push(async () => {
     printNumber++;
+    //successlog.info(`Job number ${printNumber}: BODY  : ${JSON.stringify(req.body)}`);
+
     let input = req.body.input;
     let inputFileName = req.body.inputFileName;
     let size = req.body.size;
     let landscape = req.body.landscape;
     let displayHeaderFooter = req.body.displayHeaderFooter;
     let output = req.body.output;
-    let renderDelay = req.body.renderDelay ? req.body.renderDelay : -1;
+    let renderDelay = req.body.renderDelay ? req.body.renderDelay : -1;  //En seconde
     const options = {
       inputPath: input,
       inputFileName: inputFileName,
@@ -74,7 +76,7 @@ router.post('/print', async (req, res, next) => {
         pageSize: size
       };
     }
-    if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay);
+    if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay)*1000;
 
     try {
       await printer.process(options);
