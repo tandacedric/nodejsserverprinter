@@ -23,7 +23,7 @@ var printNumber = 1;
 router.post('/print', async (req, res, next) => {
   queue.push(async () => {
     printNumber++;
-    //successlog.info(`Job number ${printNumber}: BODY  : ${JSON.stringify(req.body)}`);
+    successlog.info(`Job number ${printNumber}: BODY  : ${JSON.stringify(req.body)}`);
 
     let input = req.body.input;
     let inputFileName = req.body.inputFileName;
@@ -76,7 +76,7 @@ router.post('/print', async (req, res, next) => {
         pageSize: size
       };
     }
-    if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay)*1000;
+    if (parseInt(renderDelay) > 0) options['renderDelay'] = parseInt(renderDelay);// La valeur founis est déjà en millis
 
     try {
       await printer.process(options);

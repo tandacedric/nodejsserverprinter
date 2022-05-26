@@ -11,6 +11,12 @@
 
   const successLogger = winston.createLogger({
     level: 'info',
+    format: winston.format.combine(
+      winston.format.timestamp({
+          format: 'YYYY-MM-DD HH:mm:ss'
+      }),
+      winston.format.simple()
+    ),
     transports: [
       new winston.transports.Console(),
     ]
@@ -34,7 +40,14 @@
   });
 
   const errorLogger = winston.createLogger({
-    level: 'info',
+    level: 'error',
+
+    format: winston.format.combine(
+      winston.format.timestamp({
+          format: 'YYYY-MM-DD HH:mm:ss'
+      }),
+      winston.format.simple()
+    ),
     transports: [
       new winston.transports.Console(),
     ]
