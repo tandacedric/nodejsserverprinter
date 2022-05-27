@@ -1,0 +1,13 @@
+POST http://localhost:5000/print HTTP/1.1
+content-type: application/json
+
+{
+    "input":"/Users/henvino/httc/printer/tmp/xbLvyHpD1653648911tmp-printed.html",
+    "size":"A4",
+    "inputFileName":"xbLvyHpD1653648911tmp-printed.html",
+    "landscape":"1",
+    "displayHeaderFooter":0,
+    "output":"/Users/henvino/httc/printer/tmp/rrreceipt-WVnKK1653651112.pdf",
+    "network":"networkidle0",
+    "renderDelay":0
+}

@@ -120,7 +120,7 @@ class Html5ToPdf {
     //successlog.info(`Wait include asset ${(new Date()).toLocaleDateString()}`)
 
     if (options.renderDelay) {
-      await page.waitFor(options.renderDelay)
+      await page.waitForTimeout(options.renderDelay)
       successlog.info(`Wait after Render delay ${renderDelay} => ${(new Date()).toLocaleDateString()}`)
 
     }
