@@ -92,11 +92,11 @@ class Html5ToPdf {
 
   async process(opts) {
     let options = this.parseOptions(opts)
-    //successlog.info(`Enter process ${(new Date()).toLocaleDateString()}`)
+    successlog.info(`Enter process ${(new Date()).toLocaleDateString()}`)
 
     let page = await this.browser.newPage()
-    //successlog.info(`Create new Page ${(new Date()).toLocaleDateString()}`)
-    //console.log("url", `${options.basePath}/${options.inputFileName}`)
+    successlog.info(`Create new Page ${(new Date()).toLocaleDateString()}`)
+    console.log("url", `${options.basePath}/${options.inputFileName}`)
     await page.goto(`${options.basePath}/${options.inputFileName}`, {
       waitUntil: "networkidle0",
       //timeout:0
@@ -110,7 +110,7 @@ class Html5ToPdf {
         document.querySelector("body").innerHTML = body
       }, options.body)
     }
-    //successlog.info(`Wait until networkidle0 ${(new Date()).toLocaleDateString()}`)
+    successlog.info(`Wait until networkidle0 ${(new Date()).toLocaleDateString()}`)
     //successlog.info(`Wait until networkidle2 ${(new Date()).toLocaleDateString()}`)
 
     //await this.includeAssets(options)
@@ -118,17 +118,17 @@ class Html5ToPdf {
 
     if (options.renderDelay) {
       await page.waitFor(options.renderDelay)
-      //successlog.info(`Wait after Render delay ${renderDelay} => ${(new Date()).toLocaleDateString()}`)
+      successlog.info(`Wait after Render delay ${renderDelay} => ${(new Date()).toLocaleDateString()}`)
 
     }
-    //successlog.info(`Wait after create pdf ${(new Date()).toLocaleDateString()}`)
+    successlog.info(`Wait after create pdf ${(new Date()).toLocaleDateString()}`)
 
     const buf = await page.pdf(options.pdf)
-    //successlog.info(`Create pdf ${(new Date()).toLocaleDateString()}`)
+    successlog.info(`Create pdf ${(new Date()).toLocaleDateString()}`)
 
     if (!options.pdf.path) {
       await page.close()
-      //successlog.info(`Close Page ${(new Date()).toLocaleDateString()}`)
+      successlog.info(`Close Page ${(new Date()).toLocaleDateString()}`)
 
       return buf
     }else{
