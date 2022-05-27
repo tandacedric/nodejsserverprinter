@@ -31,10 +31,12 @@ router.post('/print', async (req, res, next) => {
     let landscape = req.body.landscape;
     let displayHeaderFooter = req.body.displayHeaderFooter;
     let output = req.body.output;
+    let network = req.body.network;
     let renderDelay = req.body.renderDelay ? req.body.renderDelay : -1;  //En seconde
     const options = {
       inputPath: input,
       inputFileName: inputFileName,
+      network: network,
       basePath: "http://localhost:5000/tmp",
       outputPath: decodeURIComponent(output),
       include: [

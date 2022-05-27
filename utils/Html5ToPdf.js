@@ -22,6 +22,7 @@ class Html5ToPdf {
     const {
       inputBody,
       inputFileName,
+      network,
       inputPath,
       outputPath,
       templateUrl,
@@ -54,6 +55,7 @@ class Html5ToPdf {
       include: convertIncludes(include),
       renderDelay,
       inputFileName,
+      network,
       basePath,
     }
   }
@@ -96,21 +98,22 @@ class Html5ToPdf {
 
     let page = await this.browser.newPage()
     successlog.info(`Create new Page ${(new Date()).toLocaleDateString()}`)
-    console.log("url", `${options.basePath}/${options.inputFileName}`)
+    successlog.info(`Url: ${options.basePath}/${options.inputFileName}: options.network: ${options.network || "networkidle2"} `)
     await page.goto(`${options.basePath}/${options.inputFileName}`, {
-      waitUntil: "networkidle0",
-      //timeout:0
+      waitUntil: options.network || "networkidle2",
+      //timeout:9
     })
     if (options.body && /^\s*<html>/.test(options.body)) {
       await page.setContent(options.body, {
-        waitUntil: "networkidle0",
+        waitUntil:  options.network || "networkidle2",
+        //timeout:9
       })
     } else if (options.body) {
       await page.evaluate((body) => {
         document.querySelector("body").innerHTML = body
       }, options.body)
     }
-    successlog.info(`Wait until networkidle0 ${(new Date()).toLocaleDateString()}`)
+    successlog.info(`Wait until  ${options.network || "networkidle2"} ${(new Date()).toLocaleDateString()}`)
     //successlog.info(`Wait until networkidle2 ${(new Date()).toLocaleDateString()}`)
 
     //await this.includeAssets(options)
